@@ -3,3 +3,4 @@ This repository contains my coding projects for ECOMP 6207.80, Coding and Design
 - [Project 2](chatbot.py)
 - [Project 3](spirographs.py)
 - [Project 4](adventuregame.py)
+- [Project 5](dicegame.py)
