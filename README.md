@@ -5,3 +5,4 @@ This repository contains my coding projects for ECOMP 6207.80, Coding and Design
 - [Project 4](adventuregame.py)
 - [Project 5](dicegame.py)
 - [Project 6](arcadegame.py)
+- [Final Project](recyclegame.py)
