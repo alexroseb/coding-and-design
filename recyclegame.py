@@ -3,22 +3,24 @@ from tkinter.ttk import *
 import tkinter.messagebox 
 import random
 
+# Set up window
 window = Tk()
 window.title('Recycling Game')
 window.geometry("400x400")
-
 style = Style(window)
 style.theme_use('xpnative')
 
 instruct = Label(window, text="What should you do with this item?")
 instruct.pack()
 
+# Create possible objects and their associated correct answers
 objects = [PhotoImage(file='imgs\\chipbag.gif'), PhotoImage(file='imgs\\styrofoam.gif'), PhotoImage(file='imgs\\lightbulb.gif'), PhotoImage(file='imgs\\box.gif'), PhotoImage(file='imgs\\soupcan.gif'), PhotoImage(file='imgs\\utensils.gif')]
-originalO = objects.copy()
+originalO = objects.copy() # Duplicate the original list for use later
 total = len(objects)
 answers = ["t", "c", "c", "r", "r", "t"]
 originalA = answers.copy()
 
+# Choose a random object to start with
 itemChoice = random.randint(0,len(objects)-1)
 objChoice = objects.pop(itemChoice)
 answerChoice = answers.pop(itemChoice)
@@ -29,11 +31,14 @@ score = 0
 score_display = Label(window, text="Score: " + str(score))
 score_display.pack()
 
+# Reset lists to original copies
 def reset():
     global score, objects, answers
     score = 0
     objects = originalO.copy()
     answers = originalA.copy()
+
+# Check if answer is correct 
 def scoring(user_choice, answer):
     global score, itemChoice, objChoice, answerChoice
     if user_choice == answer:
@@ -61,6 +66,7 @@ def scoring(user_choice, answer):
     answerChoice = answers.pop(itemChoice)
     pic.config(image=objChoice)
 
+# Helper functions for each of the buttons
 def scoringTrash():
     scoring("t", answerChoice)
 def scoringRecycle():
@@ -68,6 +74,7 @@ def scoringRecycle():
 def scoringCenter():
     scoring("c", answerChoice)
 
+# Finish setting up the window
 Button(window, text="Trash", command=scoringTrash).pack()
 Button(window, text="Curb recycling", command=scoringRecycle).pack()
 Button(window, text="Bring to the recycling center", command=scoringCenter).pack()
